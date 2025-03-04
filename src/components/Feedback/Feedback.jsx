@@ -1,7 +1,10 @@
 import css from "./Feedback.module.css";
 
-export default function Feedback({ count: { good, neutral, bad }, totalFeedback }) {
-  const positiveFeedback = Math.round((good / totalFeedback) * 100);
+export default function Feedback({
+  count: { good, neutral, bad },
+  totalFeedback,
+  positiveFeedback,
+}) {
   return (
     <div className={css.container}>
       <p className={css.text}>Good: {good}</p>

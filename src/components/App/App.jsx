@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import css from "./App.module.css"
-import Cafe from "../Cafe/Cafe";
+import Description from "../Description/Description";
 import Feedback from "../Feedback/Feedback";
 import Options from "../Options/Options";
 import Notification  from "../Notification/Notification";
@@ -19,7 +19,7 @@ export default function App() {
   });
   
   const totalFeedback = countClicks.good + countClicks.neutral + countClicks.bad;
-
+  const positiveFeedback = Math.round((countClicks.good / totalFeedback) * 100);
   
   const updateFeedback = (feedbackType) => {
           setcountClicks({
@@ -34,14 +34,18 @@ export default function App() {
 
   return (
     <div className={css.container}>
-      <Cafe />
+      <Description />
       <Options
         onUpdate={updateFeedback}
         totalFeedback={totalFeedback}
         droppingState={setcountClicks}
       />
       {totalFeedback !== 0 ? (
-        <Feedback count={countClicks} totalFeedback={totalFeedback} />
+        <Feedback
+          count={countClicks}
+          totalFeedback={totalFeedback}
+          positiveFeedback={positiveFeedback}
+        />
       ) : (
         <Notification />
       )}

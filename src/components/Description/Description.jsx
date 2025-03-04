@@ -1,4 +1,4 @@
-import css from "./Cafe.module.css"
+import css from "./Description.module.css"
 export default function Cafe() {
   return (
     <>
